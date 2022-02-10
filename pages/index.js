@@ -12,7 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav>
+      <nav className={styles.mainnav}>
         <ul>
           <li>Home</li>
           <li>About</li>
@@ -32,21 +32,23 @@ export default function Home() {
           a noob trying to make his first blog website!
         </p>
 
+
         <div className="blogs">
+          <h2>Popular Blogs</h2>
           <div className="blogItem">
-            <h1>changing my career path</h1>
+            <h3>changing my career path</h3>
             <p>how i switched from mechanical engineering to software development</p>
           </div>
           <div className="blogItem">
-            <h1>changing my career path</h1>
+            <h3>changing my career path</h3>
             <p>how i switched from mechanical engineering to software development</p>
           </div>
           <div className="blogItem">
-            <h1>changing my career path</h1>
+            <h3>changing my career path</h3>
             <p>how i switched from mechanical engineering to software development</p>
           </div>
           <div className="blogItem">
-            <h1>changing my career path</h1>
+            <h3>changing my career path</h3>
             <p>how i switched from mechanical engineering to software development</p>
           </div>
         </div>
