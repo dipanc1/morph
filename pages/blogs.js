@@ -12,18 +12,6 @@ const Blogs = () => {
           </Link>
             <p>how i switched from mechanical engineering to software development</p>
         </div>
-        <div className={styles.blogItem}>
-          <h2>changing my career path</h2>
-          <p>how i switched from mechanical engineering to software development</p>
-        </div>
-        <div className={styles.blogItem}>
-          <h2>changing my career path</h2>
-          <p>how i switched from mechanical engineering to software development</p>
-        </div>
-        <div className={styles.blogItem}>
-          <h2>changing my career path</h2>
-          <p>how i switched from mechanical engineering to software development</p>
-        </div>
       </main>
     </div>
   )
