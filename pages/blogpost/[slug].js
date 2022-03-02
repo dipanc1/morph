@@ -1,12 +1,21 @@
 import React from 'react'
 import { useRouter } from 'next/router'
+import styles from '../../styles/BlogPost.module.css'
 
 const slug = () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const router = useRouter();
-    const {slug} = router.query;
+  const router = useRouter();
+  const { slug } = router.query;
   return (
-    <div>{slug}</div>
+    <div className={styles.container}> 
+      <main className={styles.main}>
+        <h1>
+          Title of the page {slug}
+        </h1>
+        <div>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel temporibus eveniet ex ducimus omnis perferendis recusandae eius ullam saepe iure? Esse, nobis qui!</p>
+        </div>
+      </main>
+    </div>
   )
 }
 
