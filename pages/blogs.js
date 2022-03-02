@@ -8,20 +8,20 @@ const Blogs = () => {
       <main className={styles.main}>
         <div className={styles.blogItem}>
           <Link href={'/blogpost/changing-my-career'}>
-            <h3>changing my career path</h3>
+            <h2>changing my career path</h2>
           </Link>
             <p>how i switched from mechanical engineering to software development</p>
         </div>
         <div className={styles.blogItem}>
-          <h3>changing my career path</h3>
+          <h2>changing my career path</h2>
           <p>how i switched from mechanical engineering to software development</p>
         </div>
         <div className={styles.blogItem}>
-          <h3>changing my career path</h3>
+          <h2>changing my career path</h2>
           <p>how i switched from mechanical engineering to software development</p>
         </div>
         <div className={styles.blogItem}>
-          <h3>changing my career path</h3>
+          <h2>changing my career path</h2>
           <p>how i switched from mechanical engineering to software development</p>
         </div>
       </main>
