@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
@@ -31,7 +30,8 @@ export default function Home() {
           morph!
         </h1>
         <div className={styles.imageWrapper}>
-          <Image className={styles.headerImg} src='/headerImg.jpg' alt='img' height={256} width={400} />
+          {/* <Image className={styles.headerImg} src='/headerImg.jpg' alt='img' height={256} width={400} /> */}
+          <img className={styles.headerImg} src='/headerImg.jpg' alt='img' height={256} width={400} />
         </div>
         <p className={styles.description}>
           a noob trying to make his first blog website!

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { useEffect, useState } from 'react/cjs/react.development'
 import styles from '../styles/Blog.module.css'
+import * as fs from 'fs'
 
 const Blogs = (props) => {
   console.log(props)
@@ -18,7 +19,7 @@ const Blogs = (props) => {
             <Link href={`/blogpost/${blog.slug}`}>
               <h3 className={styles.blogItemh3}>{blog.title}</h3>
             </Link>
-            <p className={styles.blogItemp}>{blog.content.substr(0, 140)}...</p>
+            <p className={styles.blogItemp}>{blog.metadesc}...</p>
           </div>
         ))}
       </main>
@@ -26,19 +27,20 @@ const Blogs = (props) => {
   )
 }
 
-export async function getServerSideProps(context) {
-  let  data = await fetch('http://localhost:3000/api/blogs')
-  let allBlogs = await data.json() 
-  // .then(res => {
-  //   return res.json();
-  // })
-  //   .then((parsed) => {
-  //     // console.log(parsed);
-  //     setBlogs(parsed);
-  //   })
-  // console.log(allBlogs)
+export async function getStaticProps(context) {
+  let data = await fs.promises.readdir(`blogdata`);
+  let myFile;
+  let allBlogs = [];
+  for (let index = 0; index < data.length; index++) {
+    const item = data[index];
+    // console.log(item)
+    myFile = await fs.promises.readFile(('blogdata/' + item), 'utf-8')
+    // console.log(myFile);
+    allBlogs.push(JSON.parse(myFile));
+  }
+
   return {
-    props: {allBlogs},
+    props: { allBlogs },
   }
 }
 
