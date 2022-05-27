@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 
 export default async function handler(req, res) {
-    console.log(req.query.count);
+    // console.log(req.query.count);
     let data = await fs.promises.readdir(`blogdata`);
     data = data.slice(0, req.query.count);
     let myFile;
