@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
-import { useEffect, useState } from 'react/cjs/react.development'
+import React, { useEffect, useState } from 'react'
 import styles from '../styles/Blog.module.css'
 import * as fs from 'fs'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -34,11 +33,11 @@ const Blogs = (props) => {
         >
           {blogs.map((blog) => (
             <div className={styles.blogItem} key={blog.slug}>
-              <Link href={`/blogpost/${blog.slug}`}>
+              <Link href={`/blogpost/${blog.slug}`} passHref>
                 <h3 className={styles.blogItemh3}>{blog.title}</h3>
               </Link>
               <p className={styles.blogItemp}>{blog.metadesc}...</p>
-              <Link href={`/blogpost/${blog.slug}`}>
+              <Link href={`/blogpost/${blog.slug}`} passHref>
                 <button className={styles.btn}>
                   Read More
                 </button>
