@@ -17,40 +17,16 @@ import {
   useColorModeValue,
   Container,
   VStack,
+  Stack,
+  Button,
+  Flex,
+  Icon,
 } from '@chakra-ui/react';
+import BlogTags from './components/BlogTags';
+import BlogAuthor from './components/BlogAuthor';
 
-//TODO: Move Latets blogs to latest blogs page using same functionality as blogs page & Admin page --> Login --> Show Button to Post Blogs, yup that's it..!!
+//TODO: Make it more secure, how cookies work? Posting blogs api  admin page redirect if not logged in, and then consume api , change Link tag on index page to next link it is reloading, yup that's it..!!
 
-
-export const BlogAuthor = (props) => {
-  return (
-    <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
-      <Image
-        borderRadius="full"
-        boxSize="40px"
-        src="https://100k-faces.glitch.me/random-image"
-        alt={`Avatar of ${props.name}`}
-      />
-      <Text fontWeight="medium">{props.name}</Text>
-      <Text>—</Text>
-      <Text>{props.date.toLocaleDateString()}</Text>
-    </HStack>
-  );
-};
-
-const BlogTags = (props) => {
-  return (
-    <HStack spacing={2} marginTop={props.marginTop}>
-      {props.tags.map((tag) => {
-        return (
-          <Tag size={'md'} variant="solid" colorScheme="orange" key={tag}>
-            {tag}
-          </Tag>
-        );
-      })}
-    </HStack>
-  );
-};
 
 export default function Home() {
   return (
@@ -62,7 +38,62 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container maxW={'7xl'} p="12">
+      <Container maxW={'7xl'} p={12}>
+        <Stack
+          textAlign={'center'}
+          align={'center'}
+          spacing={{ base: 8, md: 10 }}
+          pb={{ base: 20, md: 28 }}
+        >
+          <Heading
+            fontWeight={600}
+            fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+            lineHeight={'110%'}>
+            mor
+            <Text as={'span'} color={'orange.400'}>
+              ph
+            </Text>
+          </Heading>
+          <Text color={'gray.500'} maxW={'3xl'}>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus dolor recusandae nam neque natus, deleniti ipsa, ullam eos rerum, laborum consequatur ad quasi? Ratione facere rem adipisci quas tempora est consectetur. Eveniet, quo blanditiis!
+          </Text>
+          <Stack spacing={6} direction={'row'}>
+            <Link textDecoration="none" _hover={{ textDecoration: 'none' }} href='/blogs'>
+              <Button
+                rounded={'full'}
+                px={6}
+                colorScheme={'orange'}
+                bg={'orange.400'}
+                _hover={{ bg: 'orange.500' }}>
+                Read Blogs
+              </Button>
+            </Link>
+            <Link textDecoration="none" _hover={{ textDecoration: 'none' }} href='/contact'>
+              <Button rounded={'full'} px={6}>
+                Contact
+              </Button>
+            </Link>
+          </Stack>
+          <Flex w={'full'}>
+            <Image
+              src={'/blog.jpg'}
+              alt={'morph logo'}
+              rounded={'full'}
+              height={[
+                '100%',
+                '100%',
+                '100vh',
+              ]}
+              width={'100vw'}
+              objectFit={'cover'}
+              objectPosition={'center'}
+              mx={'auto'}
+              mb={6}
+
+            />
+          </Flex>
+        </Stack>
+
         <Heading as="h1">Stories by morph</Heading>
         <Box
           marginTop={{ base: '1', sm: '5' }}
@@ -128,90 +159,6 @@ export default function Home() {
             <BlogAuthor name="John Doe" date={new Date('2021-04-06T19:01:27Z')} />
           </Box>
         </Box>
-
-        
-        <Heading as="h2" marginTop="5">
-          Latest articles
-        </Heading>
-        <Divider marginTop="5" />
-        <Wrap spacing="30px" marginTop="5">
-          <WrapItem width={{ base: '100%', sm: '45%', md: '45%', lg: '30%' }}>
-            <Box w="100%">
-              <Box borderRadius="lg" overflow="hidden">
-                <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
-                  <Image
-                    transform="scale(1.0)"
-                    src={
-                      'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
-                    }
-                    alt="some text"
-                    objectFit="contain"
-                    width="100%"
-                    transition="0.3s ease-in-out"
-                    _hover={{
-                      transform: 'scale(1.05)',
-                    }}
-                  />
-                </Link>
-              </Box>
-              <BlogTags tags={['Engineering', 'Product']} marginTop="3" />
-              <Heading fontSize="xl" marginTop="2">
-                <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
-                  Some blog title
-                </Link>
-              </Heading>
-              <Text as="p" fontSize="md" marginTop="2">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry
-                s standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book.
-              </Text>
-              <BlogAuthor
-                name="John Doe"
-                date={new Date('2021-04-06T19:01:27Z')}
-              />
-            </Box>
-          </WrapItem>
-          <WrapItem width={{ base: '100%', sm: '45%', md: '45%', lg: '30%' }}>
-            <Box w="100%">
-              <Box borderRadius="lg" overflow="hidden">
-                <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
-                  <Image
-                    transform="scale(1.0)"
-                    src={
-                      'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
-                    }
-                    alt="some text"
-                    objectFit="contain"
-                    width="100%"
-                    transition="0.3s ease-in-out"
-                    _hover={{
-                      transform: 'scale(1.05)',
-                    }}
-                  />
-                </Link>
-              </Box>
-              <BlogTags tags={['Engineering', 'Product']} marginTop="3" />
-              <Heading fontSize="xl" marginTop="2">
-                <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
-                  Some blog title
-                </Link>
-              </Heading>
-              <Text as="p" fontSize="md" marginTop="2">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry
-                s standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book.
-              </Text>
-              <BlogAuthor
-                name="John Doe"
-                date={new Date('2021-04-06T19:01:27Z')}
-              />
-            </Box>
-          </WrapItem>
-        </Wrap>
       </Container>
     </div>
   )

@@ -1,16 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '../../styles/Home.module.css'
 import {
     Box,
     Text,
-    HStack
+    HStack,
+    Button
 } from '@chakra-ui/react'
 import Link from 'next/link'
 
 const Navbar = () => {
+    const [auth, setAuth] = React.useState(false)
+
+    useEffect(() => {
+        if (localStorage.getItem('token')) {
+            setAuth(true)
+        }
+    }, [])
+
+
     return (
-        <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'} flexDirection={'column'} p={'2rem'}>
-            <HStack spacing={20}>
+        <Box
+            display={'flex'}
+            justifyContent={'space-between'}
+            alignItems={'center'}
+            flexDirection={'column'}
+            p={'2rem'}>
+            <HStack spacing={[
+                '1.1rem',
+                '2rem',
+                '6rem',
+            ]}>
                 <Link href='/' passHref>
                     <Text _hover={{
                         as: 'mark'
@@ -32,6 +51,11 @@ const Navbar = () => {
                     <Text cursor={'pointer'} fontSize='lg' fontWeight='bold'>
                         Contact
                     </Text>
+                </Link>
+                <Link href={auth ? 'admin' : '/admin/login'} passHref>
+                    <Button>
+                        {auth ? 'Create Post' : 'Login'}
+                    </Button>
                 </Link>
             </HStack>
         </Box>

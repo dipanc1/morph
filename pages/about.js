@@ -5,7 +5,7 @@ import { Heading, Text, VStack , Container} from '@chakra-ui/react'
 const About = () => {
   return (
     <Container maxW={'7xl'} p="12">
-    <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
+    <VStack paddingTop="40px" spacing="4" alignItems="flex-start">
           <Heading as="h2">What we write about</Heading>
           <Text as="p" fontSize="lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
