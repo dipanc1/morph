@@ -8,6 +8,7 @@ blogdata/
 contactdata/
 # testing
 /coverage
+.env
 
 # next.js
 .next/
