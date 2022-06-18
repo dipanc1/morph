@@ -19,6 +19,8 @@ import {
   VStack,
 } from '@chakra-ui/react';
 
+//TODO: Move Latets blogs to latest blogs page using same functionality as blogs page & Admin page --> Login --> Show Button to Post Blogs, yup that's it..!!
+
 
 export const BlogAuthor = (props) => {
   return (
