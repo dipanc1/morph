@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import styles from '../styles/Blog.module.css'
 import * as fs from 'fs'
+import { Text, Box, Container, Button } from '@chakra-ui/react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 const Blogs = (props) => {
@@ -17,9 +18,12 @@ const Blogs = (props) => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.h1}>Latest Blogs</h1>
-      <main className={styles.main}>
+    <Box display={'flex'} justifyContent={'flex-start'} alignItems={'center'} flexDirection={'column'} p={'0 2rem'}>
+      <Text fontSize='5xl'>Latest Blogs</Text>
+      <Container minH={'80vh'} m={'10px 0px'}>
+        <Button>
+          Post a New Blog
+        </Button>
         <InfiniteScroll
           dataLength={blogs.length}
           next={fetchMoreData}
@@ -32,21 +36,21 @@ const Blogs = (props) => {
           }
         >
           {blogs.map((blog) => (
-            <div className={styles.blogItem} key={blog.slug}>
+            <Container mb={10} key={blog.slug}>
               <Link href={`/blogpost/${blog.slug}`} passHref>
-                <h3 className={styles.blogItemh3}>{blog.title}</h3>
+                <Text fontSize='2xl'>{blog.title}</Text>
               </Link>
-              <p className={styles.blogItemp}>{blog.metadesc}...</p>
+              <Text fontSize='xl'>{blog.metadesc}...</Text>
               <Link href={`/blogpost/${blog.slug}`} passHref>
-                <button className={styles.btn}>
+                <Button>
                   Read More
-                </button>
+                </Button>
               </Link>
-            </div>
+            </Container>
           ))}
         </InfiniteScroll>
-      </main>
-    </div>
+      </Container>
+    </Box>
   )
 }
 
