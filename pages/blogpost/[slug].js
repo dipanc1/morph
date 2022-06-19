@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../../styles/BlogPost.module.css'
 import * as fs from 'fs'
+import { Box, Container, Heading, Text } from '@chakra-ui/react'
 
 const Slug = (props) => {
   function createMarkup(c) {
@@ -11,15 +12,28 @@ const Slug = (props) => {
   const [blog, setBlog] = useState(props.myBlog)
 
   return (
-    <div className={styles.container}>
-      <main className={styles.main}>
-        <h1>
-          {blog && blog.title}
-        </h1>
-        {blog && <div dangerouslySetInnerHTML={createMarkup(blog.content)}></div>
-        }
-      </main>
-    </div>
+    <Container maxW={'7xl'} p="12">
+      {/* title  */}
+      <Heading as='h2' size='2xl'>
+        {blog && blog.title}
+      </Heading>
+      {/* content */}
+      <Box mt={12}>
+        <Text fontSize={'2xl'}>
+          {blog && blog.content}
+        </Text>
+        {/* Image  */}
+
+        {/* more content  */}
+      </Box>
+
+      {/* tags */}
+
+      {/* author */}
+
+      {/* date */}
+
+    </Container>
   )
 }
 

@@ -13,7 +13,7 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
-    metaDesc: {
+    metadesc: {
         type: String,
         required: true
     },
