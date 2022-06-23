@@ -25,7 +25,7 @@ import {
 import BlogTags from './components/BlogTags';
 import BlogAuthor from './components/BlogAuthor';
 
-//TODO: Make it more secure using jwt now? Posting blogs api  admin page redirect if not logged in, and then consume api , change Link tag on index page to next link it is reloading, yup that's it..!!
+//TODO: Make it more secure using jwt now?  admin page redirect if not logged in, and then consume api , change Link tag on index page to next link it is reloading, yup that's it..!!
 
 
 export default function Home() {
@@ -95,6 +95,7 @@ export default function Home() {
         </Stack>
 
         <Heading as="h1">Stories by morph</Heading>
+
         <Box
           marginTop={{ base: '1', sm: '5' }}
           display="flex"

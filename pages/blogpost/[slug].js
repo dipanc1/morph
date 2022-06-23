@@ -1,63 +1,63 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../../styles/BlogPost.module.css'
-import * as fs from 'fs'
-import { Box, Container, Heading, Text } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, Image } from '@chakra-ui/react'
+import axios from 'axios'
 
 const Slug = (props) => {
-  function createMarkup(c) {
-    return { __html: c }
-  }
-
+  // console.log(props)
   const [blog, setBlog] = useState(props.myBlog)
 
   return (
     <Container maxW={'7xl'} p="12">
       {/* title  */}
       <Heading as='h2' size='2xl'>
-        {blog && blog.title}
+        {blog.title}
       </Heading>
       {/* content */}
       <Box mt={12}>
         <Text fontSize={'2xl'}>
-          {blog && blog.content}
+          {blog.content}
         </Text>
         {/* Image  */}
-
+        <Box mt={12}>
+          <Image src={blog.image} alt={blog.title} />
+        </Box>
         {/* more content  */}
       </Box>
 
       {/* tags */}
+      <Box mt={12}>
+        <Text fontSize={'2xl'}>
+          {blog.tags}
+        </Text>
+      </Box>
 
       {/* author */}
+      <Box mt={12}>
+        <Text fontSize={'2xl'}>
+          morph
+        </Text>
+      </Box>
 
       {/* date */}
-
+      <Box mt={12}>
+        <Text fontSize={'2xl'}>
+          {new Date(blog.createdAt).toLocaleDateString()}
+        </Text>
+      </Box>
     </Container>
   )
 }
 
-export async function getStaticPaths() {
-  return {
-    paths: [
-      { params: { slug: 'future' } },
-      { params: { slug: 'how-i-started' } },
-      { params: { slug: 'coding-and-me' } },
-      { params: { slug: 'how-it-is-going' } },
-      { params: { slug: 'it-is-difficult' } },
-      { params: { slug: 'meeting-love-of-myl-ife' } },
-      { params: { slug: 'changing-my-feild' } },
-    ],
-    fallback: true
-  };
-}
 
-export async function getStaticProps(context) {
-  const { slug } = context.params;
+export async function getServerSideProps(context) {
+  const res = await axios.get(`http://localhost:3000/api/blogs/${context.query.slug}`)
+  const myBlog = res.data
+  // console.log(myBlog)
 
-  let myBlog = await fs.promises.readFile(`blogdata/${slug}.json`, 'utf8')
   return {
-    props: { myBlog: JSON.parse(myBlog) },
+    props: { myBlog }, // will be passed to the page component as props
   }
 }
 

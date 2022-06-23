@@ -7,7 +7,7 @@ const BlogAuthor = (props) => {
       <Image
         borderRadius="full"
         boxSize="40px"
-        src="https://100k-faces.glitch.me/random-image"
+        src="https://yt3.ggpht.com/ytc/AKedOLTuyp30-n5Js2Z-lWtFoHwF9buqc-Qb78wRWZJ07g=s176-c-k-c0x00ffffff-no-rj"
         alt={`Avatar of ${props.name}`}
       />
       <Text fontWeight="medium">{props.name}</Text>
