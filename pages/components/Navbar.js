@@ -26,7 +26,7 @@ const Navbar = () => {
             flexDirection={'column'}
             p={'2rem'}>
             <HStack spacing={[
-                '1.1rem',
+                '0.5rem',
                 '2rem',
                 '6rem',
             ]}>

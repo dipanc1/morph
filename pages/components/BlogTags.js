@@ -1,7 +1,7 @@
 import { HStack, Tag } from '@chakra-ui/react';
 import React from 'react'
 
-const BlogTags = (props) => {
+const Blogtags = (props) => {
   return (
     <HStack spacing={2} marginTop={props.marginTop}>
     {props.tags.map((tag) => {
@@ -15,4 +15,4 @@ const BlogTags = (props) => {
   )
 }
 
-export default BlogTags
+export default Blogtags

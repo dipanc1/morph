@@ -4,8 +4,8 @@ import styles from '../styles/Blog.module.css'
 // import * as fs from 'fs'
 import { Text, Box, Container, Button, Heading, Divider, Wrap, WrapItem, Image } from '@chakra-ui/react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import BlogTags from './components/BlogTags'
-import BlogAuthor from './components/BlogAuthor'
+import Blogtags from './components/Blogtags'
+import Blogauthor from './components/Blogauthor'
 import axios from 'axios'
 
 const Blogs = (props) => {
@@ -40,7 +40,7 @@ const Blogs = (props) => {
                   />
                 </Link>
               </Box>
-              <BlogTags tags={blog.tags.map(item => item)} marginTop="3" />
+              <Blogtags tags={blog.tags.map(item => item)} marginTop="3" />
               <Heading fontSize="xl" marginTop="2">
                 <Link href={`/blogpost/${blog.slug}`} passHref>
                   {blog.title}
@@ -49,7 +49,7 @@ const Blogs = (props) => {
               <Text as="p" fontSize="md" marginTop="2">
                 {blog.content}
               </Text>
-              <BlogAuthor
+              <Blogauthor
                 name="morph"
                 date={new Date(blog.createdAt)}
               />

@@ -1,7 +1,7 @@
 import { HStack, Image, Text } from '@chakra-ui/react'
 import React from 'react'
 
-const BlogAuthor = (props) => {
+const Blogauthor = (props) => {
   return (
     <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
       <Image
@@ -17,4 +17,4 @@ const BlogAuthor = (props) => {
   )
 }
 
-export default BlogAuthor
+export default Blogauthor

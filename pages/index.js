@@ -13,8 +13,8 @@ import {
   Button,
   Flex,
 } from '@chakra-ui/react';
-import BlogTags from './components/BlogTags';
-import BlogAuthor from './components/BlogAuthor';
+import Blogtags from './components/Blogtags';
+import Blogauthor from './components/Blogauthor';
 import axios from 'axios';
 import { useState } from 'react';
 
@@ -142,7 +142,7 @@ export default function Home(props) {
                 flexDirection="column"
                 justifyContent="center"
                 marginTop={{ base: '3', sm: '0' }}>
-                <BlogTags tags={blog.tags.map(item => item)} />
+                <Blogtags tags={blog.tags.map(item => item)} />
                 <Heading marginTop="1">
                   <Link href={`/blogpost/${blog.slug}`} passHref>
                     {blog.title}
@@ -156,7 +156,7 @@ export default function Home(props) {
                   fontSize="lg">
                   {blog.content}
                 </Text>
-                <BlogAuthor name="morph" date={new Date(blog.createdAt)} />
+                <Blogauthor name="morph" date={new Date(blog.createdAt)} />
               </Box>
             </Box>
           </>
