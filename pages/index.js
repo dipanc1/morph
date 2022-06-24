@@ -12,13 +12,44 @@ import {
   Stack,
   Button,
   Flex,
+  HStack,
+  Tag,
 } from '@chakra-ui/react';
-import Blogtags from './components/Blogtags';
-import Blogauthor from './components/Blogauthor';
+// import BlogTags from './components/BlogTags';
 import axios from 'axios';
 import { useState } from 'react';
 
 //TODO: Make it more secure using jwt yup that's it..!!
+
+const BlogAuthor = (props) => {
+  return (
+    <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
+      <Image
+        borderRadius="full"
+        boxSize="40px"
+        src="https://yt3.ggpht.com/ytc/AKedOLTuyp30-n5Js2Z-lWtFoHwF9buqc-Qb78wRWZJ07g=s176-c-k-c0x00ffffff-no-rj"
+        alt={`Avatar of ${props.name}`}
+      />
+      <Text fontWeight="medium">{props.name}</Text>
+      <Text>—</Text>
+      <Text>{props.date.toLocaleDateString()}</Text>
+    </HStack>
+  )
+}
+
+const BlogTags = (props) => {
+  return (
+    <HStack spacing={2} marginTop={props.marginTop}>
+    {props.tags.map((tag) => {
+      return (
+        <Tag size={'md'} variant="solid" colorScheme="orange" key={tag}>
+          {tag}
+        </Tag>
+      );
+    })}
+  </HStack>
+  )
+}
 
 
 export default function Home(props) {
@@ -142,7 +173,7 @@ export default function Home(props) {
                 flexDirection="column"
                 justifyContent="center"
                 marginTop={{ base: '3', sm: '0' }}>
-                <Blogtags tags={blog.tags.map(item => item)} />
+                <BlogTags tags={blog.tags.map(item => item)} />
                 <Heading marginTop="1">
                   <Link href={`/blogpost/${blog.slug}`} passHref>
                     {blog.title}
@@ -156,7 +187,7 @@ export default function Home(props) {
                   fontSize="lg">
                   {blog.content}
                 </Text>
-                <Blogauthor name="morph" date={new Date(blog.createdAt)} />
+                <BlogAuthor name="morph" date={new Date(blog.createdAt)} />
               </Box>
             </Box>
           </>
