@@ -1,6 +1,7 @@
 import { Box, Button, Container, FormControl, FormLabel, Heading, Input, Textarea } from '@chakra-ui/react'
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 const Index = () => {
   const [title, setTitle] = React.useState('')
@@ -13,7 +14,7 @@ const Index = () => {
   const [pic, setPic] = React.useState('')
   const cloudName = 'dipanc1';
   const pictureUpload = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
-
+  const router = useRouter()
 
   const postPicture = (pics) => {
     if (pics === undefined) {
@@ -63,6 +64,13 @@ const Index = () => {
         console.log(err)
       })
   }
+
+  useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      router.push('/admin/login')
+    }
+  }, [router])
+
 
 
 

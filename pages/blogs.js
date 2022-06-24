@@ -9,7 +9,7 @@ import BlogAuthor from './components/BlogAuthor'
 import axios from 'axios'
 
 const Blogs = (props) => {
-  console.log(props.allBlogs)
+  // console.log(props.allBlogs)
   const [blogs, setBlogs] = useState(props.allBlogs);
   const [count, setCount] = useState(2);
 

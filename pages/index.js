@@ -1,34 +1,31 @@
 import Head from 'next/head'
 // import Image from 'next/image'
-// import Link from 'next/link'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import {
   Box,
   Heading,
   Text,
-  Divider,
-  HStack,
-  Tag,
-  Wrap,
-  WrapItem,
-  Link,
   Image,
-  SpaceProps,
   useColorModeValue,
   Container,
-  VStack,
   Stack,
   Button,
   Flex,
-  Icon,
 } from '@chakra-ui/react';
 import BlogTags from './components/BlogTags';
 import BlogAuthor from './components/BlogAuthor';
+import axios from 'axios';
+import { useState } from 'react';
 
-//TODO: Make it more secure using jwt now?  admin page redirect if not logged in, and then consume api , change Link tag on index page to next link it is reloading, yup that's it..!!
+//TODO: Make it more secure using jwt yup that's it..!!
 
 
-export default function Home() {
+export default function Home(props) {
+
+  const [blogs, setBlogs] = useState(props.allBlogs);
+
+
   return (
     <Box>
       <Head>
@@ -58,7 +55,7 @@ export default function Home() {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus dolor recusandae nam neque natus, deleniti ipsa, ullam eos rerum, laborum consequatur ad quasi? Ratione facere rem adipisci quas tempora est consectetur. Eveniet, quo blanditiis!
           </Text>
           <Stack spacing={6} direction={'row'}>
-            <Link textDecoration="none" _hover={{ textDecoration: 'none' }} href='/blogs'>
+            <Link href={`/blogs`} passHref>
               <Button
                 rounded={'full'}
                 px={6}
@@ -68,7 +65,7 @@ export default function Home() {
                 Read Blogs
               </Button>
             </Link>
-            <Link textDecoration="none" _hover={{ textDecoration: 'none' }} href='/contact'>
+            <Link href={`/contact`} passHref>
               <Button rounded={'full'} px={6}>
                 Contact
               </Button>
@@ -95,72 +92,88 @@ export default function Home() {
         </Stack>
 
         <Heading as="h1">Stories by morph</Heading>
-
-        <Box
-          marginTop={{ base: '1', sm: '5' }}
-          display="flex"
-          flexDirection={{ base: 'column', sm: 'row' }}
-          justifyContent="space-between">
-          <Box
-            display="flex"
-            flex="1"
-            marginRight="3"
-            position="relative"
-            alignItems="center">
+        {blogs.map((blog) => (
+          <>
             <Box
-              width={{ base: '100%', sm: '85%' }}
-              zIndex="2"
-              marginLeft={{ base: '0', sm: '5%' }}
-              marginTop="5%">
-              <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
-                <Image
-                  borderRadius="lg"
-                  src={
-                    'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
-                  }
-                  alt="some good alt text"
-                  objectFit="contain"
-                />
-              </Link>
-            </Box>
-            <Box zIndex="1" width="100%" position="absolute" height="100%">
+              marginTop={{ base: '1', sm: '5' }}
+              display="flex"
+              flexDirection={{ base: 'column', sm: 'row' }}
+              justifyContent="space-between">
               <Box
-                bgGradient={useColorModeValue(
-                  'radial(orange.600 1px, transparent 1px)',
-                  'radial(orange.300 1px, transparent 1px)'
-                )}
-                backgroundSize="20px 20px"
-                opacity="0.4"
-                height="100%"
-              />
+                display="flex"
+                flex="1"
+                marginRight="3"
+                position="relative"
+                alignItems="center">
+
+                <Box
+                  width={{ base: '100%', sm: '85%' }}
+                  zIndex="2"
+                  marginLeft={{ base: '0', sm: '5%' }}
+                  marginTop="5%">
+                  <Link href={`/blogpost/${blog.slug}`} passHref>
+                    <Image
+                      borderRadius="lg"
+                      src={
+                        blog.image
+                      }
+                      alt={blog.title}
+                      objectFit="contain"
+                    />
+                  </Link>
+                </Box>
+
+                <Box zIndex="1" width="100%" position="absolute" height="100%">
+                  <Box
+                    // eslint-disable-next-line react-hooks/rules-of-hooks
+                    bgGradient={useColorModeValue(
+                      'radial(orange.600 1px, transparent 1px)',
+                      'radial(orange.300 1px, transparent 1px)'
+                    )}
+                    backgroundSize="20px 20px"
+                    opacity="0.4"
+                    height="100%"
+                  />
+                </Box>
+              </Box>
+              <Box
+                display="flex"
+                flex="1"
+                flexDirection="column"
+                justifyContent="center"
+                marginTop={{ base: '3', sm: '0' }}>
+                <BlogTags tags={blog.tags.map(item => item)} />
+                <Heading marginTop="1">
+                  <Link href={`/blogpost/${blog.slug}`} passHref>
+                    {blog.title}
+                  </Link>
+                </Heading>
+                <Text
+                  as="p"
+                  marginTop="2"
+                  // eslint-disable-next-line react-hooks/rules-of-hooks
+                  color={useColorModeValue('gray.700', 'gray.200')}
+                  fontSize="lg">
+                  {blog.content}
+                </Text>
+                <BlogAuthor name="morph" date={new Date(blog.createdAt)} />
+              </Box>
             </Box>
-          </Box>
-          <Box
-            display="flex"
-            flex="1"
-            flexDirection="column"
-            justifyContent="center"
-            marginTop={{ base: '3', sm: '0' }}>
-            <BlogTags tags={['Engineering', 'Product']} />
-            <Heading marginTop="1">
-              <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
-                Blog article title
-              </Link>
-            </Heading>
-            <Text
-              as="p"
-              marginTop="2"
-              color={useColorModeValue('gray.700', 'gray.200')}
-              fontSize="lg">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of type
-              and scrambled it to make a type specimen book.
-            </Text>
-            <BlogAuthor name="John Doe" date={new Date('2021-04-06T19:01:27Z')} />
-          </Box>
-        </Box>
+          </>
+        ))}
+
       </Container>
     </Box>
   )
+
+}
+
+export async function getServerSideProps(context) {
+
+  const res = await axios.get('http://localhost:3000/api/blogs')
+  const allBlogs = res.data?.slice(0, 3)
+
+  return {
+    props: { allBlogs }, // will be passed to the page component as props
+  }
 }

@@ -12,7 +12,7 @@ import {
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import axios from 'axios';
 
@@ -35,6 +35,13 @@ export default function Login() {
       setError(error);
     }
   }
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      router.push('/admin');
+    }
+  }, [router])
+
 
   return (
     <Flex
@@ -89,9 +96,9 @@ export default function Login() {
                 Sign in
               </Button>
             </Stack>
-              <Text fontSize='lg'>
-                {error && 'Invalid username or password'}
-              </Text>
+            <Text fontSize='lg'>
+              {error && 'Invalid username or password'}
+            </Text>
           </Stack>
         </Box>
       </Stack>
