@@ -19,7 +19,7 @@ import {
 import axios from 'axios';
 import { useState } from 'react';
 
-//TODO: Make it more secure using jwt yup that's it..!!
+//TODO: Make it more secure using jwt and login details from tht too yup that's it..!!
 
 const BlogAuthor = (props) => {
   return (
