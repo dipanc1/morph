@@ -24,13 +24,13 @@ export default function Login() {
 
   const handleClick = async () => {
     try {
-      await axios.post('http://localhost:3000/api/login', {
+      await axios.post(process.env.API_URL + '/login', {
         username,
         password
       })
-      .then(res => {
-        localStorage.setItem('token', res.data.token);
-      })
+        .then(res => {
+          localStorage.setItem('token', res.data.token);
+        })
       router.push('/admin');
     } catch (error) {
       console.log(error);

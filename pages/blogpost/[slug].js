@@ -51,7 +51,7 @@ const Slug = (props) => {
 
 
 export async function getServerSideProps(context) {
-  const res = await axios.get(`http://localhost:3000/api/blogs/${context.query.slug}`)
+  const res = await axios.get(process.env.API_URL + `/blogs/${context.query.slug}`)
   const myBlog = res.data
   // console.log(myBlog)
 

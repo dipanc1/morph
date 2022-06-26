@@ -39,14 +39,14 @@ const BlogAuthor = (props) => {
 const BlogTags = (props) => {
   return (
     <HStack spacing={2} marginTop={props.marginTop}>
-    {props.tags.map((tag) => {
-      return (
-        <Tag size={'md'} variant="solid" colorScheme="orange" key={tag}>
-          {tag}
-        </Tag>
-      );
-    })}
-  </HStack>
+      {props.tags.map((tag) => {
+        return (
+          <Tag size={'md'} variant="solid" colorScheme="orange" key={tag}>
+            {tag}
+          </Tag>
+        );
+      })}
+    </HStack>
   )
 }
 
@@ -200,7 +200,7 @@ export default function Home(props) {
 
 export async function getServerSideProps(context) {
 
-  const res = await axios.get('/api/blogs')
+  const res = await axios.get(process.env.API_URL + '/blogs')
   const allBlogs = res.data?.slice(0, 3)
 
   return {
