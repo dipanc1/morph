@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import styles from '../../styles/BlogPost.module.css'
 import { Box, Container, Heading, Text, Image } from '@chakra-ui/react'
 import axios from 'axios'
 
