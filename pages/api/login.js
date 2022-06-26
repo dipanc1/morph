@@ -9,6 +9,11 @@ const KEY = process.env.JWT_KEY;
 const handler = async (req, res) => {
     await dbConnect();
 
+    // cors enable
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    
     if (req.method === "POST") {
         const { username, password } = req.body;
         try {

@@ -6,6 +6,10 @@ const handler = async(req, res) => {
 
     await dbConnect();
 
+    //enable cors
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+
     if (method === 'GET') {
         try {
             const post = await Post.findOne({ slug });
