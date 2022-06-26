@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import styles from '../../styles/Home.module.css'
 import {
     Box,
     Text,
@@ -26,7 +25,7 @@ const Navbar = () => {
             flexDirection={'column'}
             p={'2rem'}>
             <HStack spacing={[
-                '0.5rem',
+                '1.5rem',
                 '2rem',
                 '6rem',
             ]}>
@@ -52,11 +51,11 @@ const Navbar = () => {
                         Contact
                     </Text>
                 </Link>
-                <Link href={auth ? 'admin' : '/admin/login'} passHref>
+                {/* <Link href={auth ? 'admin' : '/admin/login'} passHref>
                     <Button>
                         {auth ? 'Create Post' : 'Login'}
                     </Button>
-                </Link>
+                </Link> */}
             </HStack>
         </Box>
     )

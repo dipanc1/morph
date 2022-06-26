@@ -27,8 +27,10 @@ export default function Login() {
       await axios.post('http://localhost:3000/api/login', {
         username,
         password
-      });
-      localStorage.setItem('token', username);
+      })
+      .then(res => {
+        localStorage.setItem('token', res.data.token);
+      })
       router.push('/admin');
     } catch (error) {
       console.log(error);

@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "build:prod": "next build --env production",
+        "build:prod": "next build --env.production",
         "start": "next start",
         "lint": "next lint",
         "export": "next build && next export"
@@ -15,10 +15,13 @@
         "@emotion/react": "^11",
         "@emotion/styled": "^11",
         "axios": "^0.27.2",
+        "bcryptjs": "^2.4.3",
         "cookie": "^0.5.0",
         "dotenv": "^16.0.1",
         "emailjs-com": "^3.2.0",
         "framer-motion": "^6",
+        "js-cookie": "^3.0.1",
+        "jsonwebtoken": "^8.5.1",
         "mongoose": "^6.4.0",
         "next": "12.0.10",
         "react": "^18.2.0",

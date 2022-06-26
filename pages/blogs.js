@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import styles from '../styles/Blog.module.css'
 // import * as fs from 'fs'
 import { Text, Box, Container, Button, Heading, Divider, Wrap, WrapItem, Image, HStack, Tag } from '@chakra-ui/react'
 import InfiniteScroll from 'react-infinite-scroll-component'

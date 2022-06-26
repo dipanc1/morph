@@ -11,9 +11,10 @@ const handler = async(req, res) => {
             const blog = await Post.find();
             res.status(200).json(blog);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(err); 
         }
     }
+    // create new blog verify token and user
     if (method === 'POST') {
         try {
             const blog = await Post.create(req.body);

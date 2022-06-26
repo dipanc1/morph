@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from '../styles/About.module.css'
 import { Heading, Text, VStack , Container} from '@chakra-ui/react'
 
 const About = () => {

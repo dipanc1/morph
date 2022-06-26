@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import styles from '../styles/Contact.module.css'
 import {
   Container,
   Flex,

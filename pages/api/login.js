@@ -1,22 +1,55 @@
 import cookie from "cookie";
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import User from "../../models/User";
+import dbConnect from "../../utils/connectMongo";
 
-const handler = (req, res) => {
+const KEY = process.env.JWT_KEY;
+
+const handler = async (req, res) => {
+    await dbConnect();
+
     if (req.method === "POST") {
         const { username, password } = req.body;
-        if (
-            username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
-            res.setHeader(
-                "Set-Cookie",
-                cookie.serialize("token", process.env.TOKEN, {
-                    maxAge: 60 * 60,
-                    sameSite: 'strict',
-                    path: '/',
-                })
-            );
-            res.status(200).json('Success');
-        } else {
-            // sending message
-            res.status(401).json('Invalid username or password');
+        try {
+
+            const user = await User.findOne({ username });
+
+            if (!user) {
+                return res.status(400).json({
+                    message: "User not found"
+                });
+            }
+
+            const isMatch = await bcrypt.compare(password, user.password);
+
+            if (!isMatch) {
+                return res.status(400).json({
+                    message: "Invalid credentials"
+                });
+            }
+
+            const token = jwt.sign({ id: user._id }, KEY);
+
+            res.setHeader("Set-Cookie", cookie.serialize("token", token, {
+                httpOnly: true,
+                maxAge: 60 * 60 * 24 * 7,
+                sameSite: "strict",
+            }));
+
+            res.json({
+                message: "Successfully logged in",
+                token,
+                user: {
+                    id: user._id,
+                    username: user.username,
+                }
+            });
+
+        } catch (error) {
+            res.status(400).json({
+                message: error.message
+            });
         }
     }
 }
