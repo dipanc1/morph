@@ -200,7 +200,7 @@ export default function Home(props) {
 
 export async function getServerSideProps(context) {
 
-  const res = await axios.get('http://localhost:3000/api/blogs')
+  const res = await axios.get('/api/blogs')
   const allBlogs = res.data?.slice(0, 3)
 
   return {
