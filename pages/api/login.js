@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from "../../models/User";
 import dbConnect from "../../utils/connectMongo";
+import cookie from "cookie";
 
 const KEY = process.env.JWT_KEY;
 
