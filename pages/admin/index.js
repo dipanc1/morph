@@ -49,7 +49,7 @@ const Index = () => {
       slug,
       image: pic
     }
-    axios.post(process.env.API_URL + '/blogs', data)
+    axios.post('/api/blogs', data)
       .then(res => {
         console.log(res)
         setTitle('')

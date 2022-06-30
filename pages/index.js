@@ -19,7 +19,7 @@ import axios from 'axios';
 import { useState } from 'react';
 
 
-//TODO: Hosting API Problem
+//TODO: adding head to pages
 
 const BlogAuthor = (props) => {
   return (

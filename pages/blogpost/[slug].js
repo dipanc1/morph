@@ -53,7 +53,7 @@ const Slug = (props) => {
 export async function getServerSideProps(context) {
   const res = await axios.get(process.env.API_URL + `/blogs/${context.query.slug}`)
   const myBlog = res.data
-  // console.log(myBlog)
+  // console.log("MYBLOG<<<<<<<<<<<<<",myBlog)
 
   return {
     props: { myBlog }, // will be passed to the page component as props
