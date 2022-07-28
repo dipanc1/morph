@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 // import * as fs from 'fs'
 import { Text, Box, Container, Button, Heading, Divider, Wrap, WrapItem, Image, HStack, Tag } from '@chakra-ui/react'
@@ -42,6 +43,12 @@ const Blogs = (props) => {
 
   return (
     <Container maxW={'7xl'} p="12">
+      <Head>
+        <title>morph - blogs</title>
+        <meta name="description" content="blogs on morph" />
+        <meta name="keywords" content="blog, blogs, morph blog, morph blogs" />
+        <link rel="icon" href="/headerImg.jpg" />
+      </Head>
       <Heading as="h2" marginTop="5">
         Latest articles
       </Heading>

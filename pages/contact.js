@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import Head from 'next/head'
 import {
   Container,
   Flex,
@@ -77,6 +78,12 @@ const Contact = () => {
 
   return (
     <Container maxW="full" mt={0} centerContent overflow="hidden">
+      <Head>
+        <title>morph - contact</title>
+        <meta name="description" content="contact morph" />
+        <meta name="keywords" content="blog, blogs, morph blog, morph blogs" />
+        <link rel="icon" href="/headerImg.jpg" />
+      </Head>
       <Flex>
         <Box
           bg="orange.900"

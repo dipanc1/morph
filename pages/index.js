@@ -19,8 +19,6 @@ import axios from 'axios';
 import { useState } from 'react';
 
 
-//TODO: adding head to pages
-
 const BlogAuthor = (props) => {
   return (
     <HStack marginTop="2" spacing="2" display="flex" alignItems="center">

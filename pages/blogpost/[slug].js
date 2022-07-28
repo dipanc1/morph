@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Box, Container, Heading, Text, Image } from '@chakra-ui/react'
 import axios from 'axios'
@@ -9,6 +10,11 @@ const Slug = (props) => {
 
   return (
     <Container maxW={'7xl'} p="12">
+      <Head>
+        <title>morph - {blog.title}</title>
+        <meta name="keywords" content={blog.tags} />
+        <link rel="icon" href="/headerImg.jpg" />
+      </Head>
       {/* title  */}
       <Heading as='h2' size='2xl'>
         {blog.title}
