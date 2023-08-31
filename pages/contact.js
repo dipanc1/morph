@@ -23,11 +23,11 @@ import {
   MdPhone,
   MdEmail,
   MdLocationOn,
-  MdWeb,
   MdOutlineEmail,
 } from 'react-icons/md';
 import { BsGithub, BsPerson, BsLinkedin } from 'react-icons/bs';
 import emailjs from '@emailjs/browser'
+import Link from 'next/link';
 
 
 const Contact = () => {
@@ -35,6 +35,11 @@ const Contact = () => {
   const [email, setEmail] = React.useState('')
   const [desc, setDesc] = React.useState('')
   const formRef = useRef();
+  const linkedin = 'https://www.linkedin.com';
+  const github = 'https://github.com';
+  const map = 'https://www.google.com/maps/place/India/@20,20z';
+  const phone = 'tel:100';
+  const mail = 'mailto:morph@notworking.com';
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -101,36 +106,42 @@ const Contact = () => {
                   </Text>
                   <Box py={{ base: 5, sm: 5, md: 8, lg: 10 }}>
                     <VStack pl={0} spacing={3} alignItems="flex-start">
-                      <Button
-                        size="md"
-                        height="48px"
-                        width="300px"
-                        variant="ghost"
-                        color="#DCE2FF"
-                        _hover={{ border: '2px solid #eb7d1c' }}
-                        leftIcon={<MdPhone color="#f17a19" size="20px" />}>
-                        100 🕵️
-                      </Button>
-                      <Button
-                        size="md"
-                        height="48px"
-                        width="300px"
-                        variant="ghost"
-                        color="#DCE2FF"
-                        _hover={{ border: '2px solid #eb7d1c' }}
-                        leftIcon={<MdEmail color="#f17a19" size="20px" />}>
-                        morph@notworking.com 📧
-                      </Button>
-                      <Button
-                        size="md"
-                        height="48px"
-                        width="300px"
-                        variant="ghost"
-                        color="#DCE2FF"
-                        _hover={{ border: '2px solid #eb7d1c' }}
-                        leftIcon={<MdLocationOn color="#f17a19" size="20px" />}>
-                        India 🇮🇳
-                      </Button>
+                      <Link href={phone} passHref>
+                        <Button
+                          size="md"
+                          height="48px"
+                          width="300px"
+                          variant="ghost"
+                          color="#DCE2FF"
+                          _hover={{ border: '2px solid #eb7d1c' }}
+                          leftIcon={<MdPhone color="#f17a19" size="20px" />}>
+                          100 🕵️
+                        </Button>
+                      </Link>
+                      <Link href={mail} passHref>
+                        <Button
+                          size="md"
+                          height="48px"
+                          width="300px"
+                          variant="ghost"
+                          color="#DCE2FF"
+                          _hover={{ border: '2px solid #eb7d1c' }}
+                          leftIcon={<MdEmail color="#f17a19" size="20px" />}>
+                          morph@notworking.com 📧
+                        </Button>
+                      </Link>
+                      <Link href={map} passHref>
+                        <Button
+                          size="md"
+                          height="48px"
+                          width="300px"
+                          variant="ghost"
+                          color="#DCE2FF"
+                          _hover={{ border: '2px solid #eb7d1c' }}
+                          leftIcon={<MdLocationOn color="#f17a19" size="20px" />}>
+                          India 🇮🇳
+                        </Button>
+                      </Link>
                     </VStack>
                   </Box>
                   <HStack
@@ -138,30 +149,26 @@ const Contact = () => {
                     spacing={5}
                     px={5}
                     alignItems="flex-start">
-                    <IconButton
-                      aria-label="facebook"
-                      variant="ghost"
-                      size="lg"
-                      isRound={true}
-                      _hover={{ bg: 'orange.400' }}
-                      icon={<BsLinkedin size="28px" />}
-                    />
-                    <IconButton
-                      aria-label="github"
-                      variant="ghost"
-                      size="lg"
-                      isRound={true}
-                      _hover={{ bg: 'orange.400' }}
-                      icon={<BsGithub size="28px" />}
-                    />
-                    <IconButton
-                      aria-label="discord"
-                      variant="ghost"
-                      size="lg"
-                      isRound={true}
-                      _hover={{ bg: 'orange.400' }}
-                      icon={<MdWeb size="28px" />}
-                    />
+                    <Link href={linkedin} passHref>
+                      <IconButton
+                        aria-label="facebook"
+                        variant="ghost"
+                        size="lg"
+                        isRound={true}
+                        _hover={{ bg: 'orange.400' }}
+                        icon={<BsLinkedin size="28px" />}
+                      />
+                    </Link>
+                    <Link href={github} passHref>
+                      <IconButton
+                        aria-label="github"
+                        variant="ghost"
+                        size="lg"
+                        isRound={true}
+                        _hover={{ bg: 'orange.400' }}
+                        icon={<BsGithub size="28px" />}
+                      />
+                    </Link>
                   </HStack>
                 </Box>
               </WrapItem>

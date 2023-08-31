@@ -16,7 +16,7 @@ const Slug = (props) => {
         <link rel="icon" href="/headerImg.jpg" />
       </Head>
       {/* title  */}
-      <Heading as='h2' size='2xl'>
+      <Heading as='h2' size='xl'>
         {blog.title}
       </Heading>
       {/* content */}
@@ -26,14 +26,14 @@ const Slug = (props) => {
         </Text>
         {/* Image  */}
         <Box mt={12}>
-          <Image src={blog.image} alt={blog.title} />
+          <Image height={'72'} src={blog.image} alt={blog.title} />
         </Box>
         {/* more content  */}
       </Box>
 
       {/* tags */}
       <Box mt={12}>
-        <Text fontSize={'2xl'}>
+        <Text fontSize={'sm'}>
           {blog.tags}
         </Text>
       </Box>

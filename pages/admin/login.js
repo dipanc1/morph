@@ -21,7 +21,6 @@ export default function Login() {
   const [password, setPassword] = useState(null);
   const [error, setError] = useState(false);
   const router = useRouter();
-  console.log("API TUL <<<<<<<<<<<<<<<<<<<",process.env.API_URL)
 
   const handleClick = async () => {
     try {
