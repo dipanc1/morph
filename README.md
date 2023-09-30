@@ -14,3 +14,5 @@ yarn dev
 
 - [ ] CRUD for posts
 - [ ] Beautiful UI
+- [ ] Save Blog as Draft
+- [ ] Option to add images and code snippets in between text
