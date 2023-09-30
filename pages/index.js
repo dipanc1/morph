@@ -175,7 +175,7 @@ export default function Home(props) {
                 <BlogTags tags={blog.tags.map(item => item)} />
                 <Heading marginTop="1">
                   <Link href={`/blogpost/${blog.slug}`} passHref>
-                    {blog.title}
+                    {blog.title.slice(0, 50)}
                   </Link>
                 </Heading>
                 <Text
@@ -184,7 +184,7 @@ export default function Home(props) {
                   // eslint-disable-next-line react-hooks/rules-of-hooks
                   color={useColorModeValue('gray.700', 'gray.200')}
                   fontSize="lg">
-                  {blog.content}
+                  {blog.content.slice(0, 100)}...
                 </Text>
                 <BlogAuthor name="morph" date={new Date(blog.createdAt)} />
               </Box>

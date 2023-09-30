@@ -175,8 +175,8 @@ const Contact = () => {
               <WrapItem>
                 <Box bg="white" borderRadius="lg">
                   <Box m={8} color="orange.900">
-                    <VStack spacing={5}>
-                      <form ref={formRef} onSubmit={handleSubmit}>
+                    <form ref={formRef} onSubmit={handleSubmit}>
+                      <VStack spacing={'5'}>
                         <FormControl id="name">
                           <FormLabel>Your Name</FormLabel>
                           <InputGroup borderColor="#E0E1E7">
@@ -232,8 +232,8 @@ const Contact = () => {
                             Send Message
                           </Button>
                         </FormControl>
-                      </form>
-                    </VStack>
+                      </VStack>
+                    </form>
                   </Box>
                 </Box>
               </WrapItem>

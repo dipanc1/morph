@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { Box, Container, Heading, Text, Image } from '@chakra-ui/react'
 import axios from 'axios'
 
@@ -9,7 +8,7 @@ const Slug = (props) => {
   const [blog, setBlog] = useState(props.myBlog)
 
   return (
-    <Container maxW={'7xl'} p="12">
+    <Container maxW={'7xl'} p="12" display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
       <Head>
         <title>morph - {blog.title}</title>
         <meta name="keywords" content={blog.tags} />

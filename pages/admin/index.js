@@ -2,6 +2,7 @@ import { Box, Button, Container, FormControl, FormLabel, Heading, Input, Textare
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 const Index = () => {
   const [title, setTitle] = React.useState('')
@@ -76,6 +77,12 @@ const Index = () => {
 
   return (
     <Container maxW={'7xl'} p="12">
+      <Head>
+        <title>morph - create</title>
+        <meta name="description" content="create morph" />
+        <meta name="keywords" content="blog, blogs, morph blog, morph blogs" />
+        <link rel="icon" href="/headerImg.jpg" />
+      </Head>
       <Heading as='h2' size='2xl'>Create a new Post...</Heading>
       <Box m={12}>
         <form onSubmit={handleSubmit}>
@@ -89,7 +96,7 @@ const Index = () => {
           </FormControl>
           <FormControl m={10} isRequired>
             <FormLabel htmlFor='content'>Content</FormLabel>
-            <Textarea id='content' placeholder='Content' onChange={
+            <Textarea rows={'20'} cols={'50'} id='content' placeholder='Content' onChange={
               (e) => {
                 setContent(e.target.value)
               }
